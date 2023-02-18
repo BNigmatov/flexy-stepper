@@ -1,0 +1,23 @@
+<ng-template
+  [ngTemplateOutlet]="templateRef"
+  [ngTemplateOutletContext]="{
+    $implicit: thisStepper
+  }"
+></ng-template>
+
+<mat-tab-group [(selectedIndex)]="selectedIndex" class="header-less-tabs">
+  <mat-tab *ngFor="let step of steps" [label]="step.key">
+    <ng-template matTabContent>
+      <flexy-component
+        [component]="step.component"
+        [payload]="payload"
+        [options]="options"
+        (done)="onDone($event)"
+      ></flexy-component>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+
+<p>stack={{ stack | json }}</p>
+<p>checkpoints={{ checkpoints | json }}</p>
+<p>options={{ options | json }}</p>

@@ -1,0 +1,15 @@
+<p>Start editing to see some magic happen</p>
+<flexy-stepper
+  [steps]="steps"
+  [payload]="{ aaa: 111 }"
+  [options]="{ localStorageKey: 'test', is_not_auto_continue: true }"
+>
+  <ng-template let-stepper>
+    <p>
+      <button (click)="stepper.back()" [disabled]="!stepper.stack?.length">
+        Back
+      </button>
+      {{ stepper.title }}
+    </p>
+  </ng-template>
+</flexy-stepper>
